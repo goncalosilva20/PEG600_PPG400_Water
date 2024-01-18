@@ -1,0 +1,54 @@
+;cpp                 =  /lib/cpp
+integrator          =  md
+tinit               =  0.0
+dt                  =  0.002
+nsteps              =  500000 ; 1 ns
+comm-mode           =  Linear
+nstcomm             =  100
+nstxout-compressed  =  2000
+nstvout             =  0
+nstfout             =  0
+nstlog              =  1000
+nstcalcenergy       =  10
+nstenergy           =  100
+nstlist             =  10
+energygrps          =  System
+;ns_type             =  grid
+
+; Constraints
+constraints         =  h-bonds
+constraint_algorithm = LINCS
+
+;Treatment of Vdw and Elctrostatics
+cutoff-scheme       =  Verlet
+vdwtype             =  cut-off
+;rlist               =  1.0
+rvdw                =  1.1
+coulombtype         =  PME
+rcoulomb            =  1.1
+fourierspacing      =  0.1
+pme_order           =  4
+;ewald_rtol          =  1e-05
+;optimize_fft        =  yes
+DispCorr            =  EnerPres
+
+; Temperature coupling is on
+Tcoupl              =  berendsen
+;Tcoupl              =  nose-hoover
+tau_t               =  0.5
+tc-grps             =  System
+ref_t               = 523.15
+
+; Pressure coupling
+;Pcoupl              =  no
+Pcoupl              =  berendsen
+;Pcoupl              =  parrinello-rahman
+pcoupltype          =  isotropic
+tau_p               =  10.0
+compressibility     =  4.5e-5 ; water is 4.5e-5
+ref_p               =  1000.0
+
+; Generate velocites
+gen_vel             = yes
+ gen_temp            =  523.15
+ gen_seed            =  175829

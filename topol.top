@@ -1,0 +1,17 @@
+#include "forcefield.itp"
+[atomtypes]
+;name     mass      charge   ptype    sigma        epsilon
+IW     0             0.000       D   0.0           0.0
+OWT4   15.9994       0.000       A   0.31589       0.77490
+HW      1.0079       0.000       A   0.00000E+00   0.00000E+00
+#include "PEG600.itp"
+#include "PPG400.itp"
+#include "tip4p.itp"
+
+[ system ]
+PEG600+PPG400+water
+
+[ molecules ]
+PEG  300
+PPG  300
+SOL  2820
